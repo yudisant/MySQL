@@ -3,8 +3,9 @@ package data;
 public enum Commands {
     ADD,
     LIST,
-    EXIT,
-    UNKNOW;
+    UPDATE,
+    EXIT;
+
 
     public static Commands of(String input) {
         for (Commands commands : Commands.values()) {
@@ -12,6 +13,6 @@ public enum Commands {
                 return commands;
             }
         }
-        return UNKNOW;
+        return null;
     }
 }

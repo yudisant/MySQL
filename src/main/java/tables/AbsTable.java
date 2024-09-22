@@ -2,7 +2,6 @@ package tables;
 
 import db.DBConnect;
 import db.MySQLConnect;
-
 import java.util.List;
 
 public abstract class AbsTable implements ITable {
@@ -16,8 +15,7 @@ public abstract class AbsTable implements ITable {
 
     @Override
     public void created (List<String>columns) {
-        delete();
-        dbConnect.execute(String.format("CREATE TABLE %s (%s);", tableName, String.join(",", columns)));
+            dbConnect.execute(String.format("CREATE TABLE IF NOT EXISTS %s (%s);", tableName, String.join(",", columns)));
     }
 
     @Override

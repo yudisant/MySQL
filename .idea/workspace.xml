@@ -5,14 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdf93344-a0f6-4a6e-a052-9e65c906b6e6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/animals/Animals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/animals/Animals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/AnimalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/AnimalData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/data/Commands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/Commands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tables/AbsTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tables/AbsTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tables/AnimalsTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tables/AnimalsTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ValidateNumber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ValidateNumber.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,19 +84,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Main.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/db/MySQLConnect.java</url>
           <line>12</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/tables/AbsTable.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

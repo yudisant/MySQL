@@ -1,15 +1,76 @@
+import animalFactory.AnimalFactory;
 import animals.Animals;
 import data.AnimalData;
 import data.Commands;
 import tables.AnimalsTable;
 import utils.ValidateNumber;
 
+import java.sql.SQLException;
 import java.util.*;
 
 public class Main {
-    private static Scanner scanner;
-    private static ValidateNumber validateNumber;
+    private static Scanner scanner = new Scanner(System.in);
+    private static ValidateNumber validateNumber = new ValidateNumber();
 
+    public static void main(String[] args) throws SQLException {
+        AnimalsTable animalsTable = new AnimalsTable();
+        scanner = new Scanner(System.in);
+        validateNumber = new ValidateNumber();
+        Animals animals;
+
+        List<String> columnsAnimalsTable = new ArrayList<>();
+        columnsAnimalsTable.add("id INT AUTO_INCREMENT PRIMARY KEY");
+        columnsAnimalsTable.add("color VARCHAR(20)");
+        columnsAnimalsTable.add("name VARCHAR(20)");
+        columnsAnimalsTable.add("weight INT");
+        columnsAnimalsTable.add("type VARCHAR(20)");
+        columnsAnimalsTable.add("age INT");
+        animalsTable.created(columnsAnimalsTable);
+
+        while (true) {
+
+            System.out.print("Введите команду: ");
+            System.out.println(Arrays.toString(Commands.values()));
+            String input = scanner.next().toUpperCase(Locale.ROOT).trim();
+            Commands comm = Commands.of(input);
+
+            if (comm == null) {
+                System.out.println("Неверно введена команда.");
+                continue;
+            }
+
+            switch (comm) {
+                case ADD:
+                    animals = createAnimalWithData();
+                    animalsTable.write(animals);
+                    animals.say();
+                    break;
+
+                case LIST:
+                    if (animalsTable.isTableEmpty()) {
+                        System.out.println("Список пуст. Добавьте животное.");
+                    }
+                    ArrayList<Animals> animalList = animalsTable.read();
+                    animalList.forEach(System.out::println);
+                    break;
+
+                case EXIT:
+                    System.exit(0);
+                    System.out.println("EXIT");
+                    break;
+
+                case UPDATE:
+                    System.out.println("Введите id животного: ");
+                    int id = scanner.nextInt();
+
+                    Animals newAnimal = createAnimalWithData();
+                    newAnimal.setId(id);
+
+                    animalsTable.update(newAnimal);
+                    break;
+            }
+        }
+    }
     private static int enterNumberData (String errorMessage, int attempt) {
         if (attempt == 0) {
             return -1;
@@ -30,84 +91,46 @@ public class Main {
         return -1;
     }
 
-    public static void main(String[] args) {
-        AnimalsTable animalsTable = new AnimalsTable();
-        scanner = new Scanner(System.in);
-        validateNumber = new ValidateNumber();
-        Animals animals = new Animals();
-
-        List<String>columnsAnimalsTable = new ArrayList<>();
-        columnsAnimalsTable.add("id INT AUTO_INCREMENT PRIMARY KEY");
-        columnsAnimalsTable.add("color VARCHAR(20)");
-        columnsAnimalsTable.add("name VARCHAR(20)");
-        columnsAnimalsTable.add("weight INT");
-        columnsAnimalsTable.add("type VARCHAR(20)");
-        columnsAnimalsTable.add("age INT");
-        animalsTable.created(columnsAnimalsTable);
-
+    private static Animals createAnimalWithData() {
         while (true) {
+            System.out.print("Введите тип животного: ");
+            System.out.println(Arrays.toString(AnimalData.values()));
+            String animalType = scanner.next().toUpperCase().trim();
 
-            System.out.println("Введите команду: ADD, LIST, EXIT");
-            String input = scanner.next().toUpperCase(Locale.ROOT).trim();
-            Commands comm = Commands.of(input);
-
-            switch (comm) {
-                case ADD:
-                    while (true) {
-                        System.out.print("Введите тип животного: ");
-                        System.out.println(Arrays.toString(AnimalData.values()));
-                        String animalType = scanner.next().toUpperCase().trim();
-
-                        boolean isAnimalsValid = false;
-                        for (AnimalData animalData : AnimalData.values()) {
-                            if (animalData.name().equals(animalType)) {
-                                isAnimalsValid = true;
-                                break;
-                            }
-                        }
-
-                        if (!isAnimalsValid) {
-                            System.out.println("Недопустимый тип животного!");
-                            continue;
-                        }
-
-                        System.out.println("Введите цвет животного: ");
-                        String animalColor = scanner.next();
-
-                        System.out.println("Введите имя животного: ");
-                        String animalName = scanner.next();
-
-                        System.out.println("Введите вес животного: ");
-                        int animalWeight = enterNumberData("Неверно введён вес! \nПовторите ввод: ", 5);
-                        if (animalWeight == -1) {
-                            System.out.println("Вы потратили все попытки ввода!");
-                            continue;
-                        }
-
-                        System.out.println("Введите возраст животного: ");
-                        int animaAge = enterNumberData("Неверно введён возраст! \nПовторите ввод: ", 5);
-                        if (animaAge == -1) {
-                            System.out.println("Вы потратили все попытки ввода!");
-                            continue;
-                        }
-                        animalsTable.write(new Animals(animalColor, animalName, animalWeight, animalType, animaAge));
-
-                        animals.say();
-
-                        break;
-                    }
-                case LIST:
-
+            boolean isAnimalsValid = false;
+            for (AnimalData animalData : AnimalData.values()) {
+                if (animalData.name().equals(animalType)) {
+                    isAnimalsValid = true;
                     break;
-
-                case EXIT:
-                    System.exit(0);
-                    System.out.println("EXIT");
-
-                default:
-                    System.out.println("Неверная команда!");
-
+                }
             }
+
+            if (!isAnimalsValid) {
+                System.out.println("Недопустимый тип животного!");
+                continue;
+            }
+
+            System.out.println("Введите цвет животного: ");
+            String animalColor = scanner.next();
+
+            System.out.println("Введите имя животного: ");
+            String animalName = scanner.next();
+
+            System.out.println("Введите вес животного: ");
+            int animalWeight = enterNumberData("Неверно введён вес! \nПовторите ввод: ", 5);
+            if (animalWeight == -1) {
+                System.out.println("Вы потратили все попытки ввода!");
+                continue;
+            }
+
+            System.out.println("Введите возраст животного: ");
+            int animalAge = enterNumberData("Неверно введён возраст! \nПовторите ввод: ", 5);
+            if (animalAge == -1) {
+                System.out.println("Вы потратили все попытки ввода!");
+            }
+            return AnimalFactory.createAnimals(animalColor, animalName, animalWeight, animalType, animalAge);
         }
+
     }
+
 }

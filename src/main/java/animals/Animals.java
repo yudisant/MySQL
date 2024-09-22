@@ -1,5 +1,7 @@
 package animals;
 
+import data.AnimalData;
+
 public class Animals {
     private int id;
     private int age, weight;
@@ -92,7 +94,8 @@ public class Animals {
 
     @Override
     public String toString() {
-        return "Привет! Меня зовут " + name + " , мне " + age + " " + years() + ", я вешу - " + weight + " кг, мой цвет - " + color;
+        return "Привет! Я " + type + " Меня зовут " + name + ", мне " + age + " " + years() +
+                ", я вешу - " + weight + " кг, мой цвет - " + color + " мой id - " + id;
     }
 
     private String years() {
@@ -102,7 +105,7 @@ public class Animals {
             return "лет";
         }
 
-        if (ostatok >=2 && ostatok <= 4) {
+        if (ostatok >=2) {
             return "года";
         }
         return "год";
