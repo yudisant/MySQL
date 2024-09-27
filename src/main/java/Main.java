@@ -49,7 +49,6 @@ public class Main {
                     break;
 
                 case LIST:
-                    inner:
                     while (true) {
                         System.out.println("Выберите тип вывода списка: ");
                         System.out.println(Arrays.toString(ListFiltr.values()));
