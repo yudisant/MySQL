@@ -1,7 +1,5 @@
 package animals;
 
-import data.AnimalData;
-
 public class Animals {
     private int id;
     private int age, weight;

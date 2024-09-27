@@ -156,7 +156,5 @@ public class Main {
             }
             return AnimalFactory.createAnimals(animalColor, animalName, animalWeight, animalType, animalAge);
         }
-
     }
-
 }
