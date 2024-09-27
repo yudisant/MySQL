@@ -57,7 +57,7 @@ public class Main {
                         if (listFiltr == null) {
                         System.out.println("Неверная введена команда.");
                         continue;
-                    }
+                        }
 
                     switch (listFiltr) {
                         case ALL :
@@ -66,25 +66,19 @@ public class Main {
                             break;
 
                         case FILTR:
-                            System.out.printf("Введите тип животного: %s", String.join("''", AnimalFactory.animalTypes));
+                            System.out.printf("Введите тип животного: %s", String.join(", ", AnimalFactory.animalTypes));
                             String types = scanner.next();
 
-                            ArrayList<Animals> animalsByType = animalsTable.read(types);
-                            if (animalsByType.isEmpty()) {
+                            ArrayList<Animals> animalsArrayList = animalsTable.readFilter(types);
+                            if (animalsArrayList.isEmpty()) {
                                 System.out.println("Животные заданного типа не найдены");
                             } else {
-                                for (Animals animal : animalsByType) {
-                                    System.out.println(animal);
+                                animalsArrayList.forEach(System.out::println);
                                 }
-//                            ArrayList<Animals> animalsArrayList = animalsTable.readFilter(input);
                             break;
-//                        if (animalsTable.isTableEmpty()) {
-//                            System.out.println("Список пуст. Добавьте животное.");
-//                        }
-                    }
+                        }
                         break;
                     }
-
 
                 case EXIT:
                     System.exit(0);
@@ -103,6 +97,7 @@ public class Main {
             }
         }
     }
+
     private static int enterNumberData (String errorMessage, int attempt) {
         if (attempt == 0) {
             return -1;
