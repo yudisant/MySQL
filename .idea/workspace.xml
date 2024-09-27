@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdf93344-a0f6-4a6e-a052-9e65c906b6e6" name="Changes" comment="12">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="cdf93344-a0f6-4a6e-a052-9e65c906b6e6" name="Changes" comment="12" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +39,8 @@
     "git-widget-placeholder": "slave",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/zanud/Downloads/Otus_Java_Dz3-main",
-    "onboarding.tips.debug.path": "C:/Users/zanud/Documents/Java/mySQL/src/main/java/org/example/Main.java"
+    "onboarding.tips.debug.path": "C:/Users/zanud/Documents/Java/mySQL/src/main/java/org/example/Main.java",
+    "settings.editor.selected.configurable": "vcs.Git"
   }
 }]]></component>
   <component name="RecentsManager">
