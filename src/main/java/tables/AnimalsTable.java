@@ -34,7 +34,7 @@ public class AnimalsTable extends AbsTable{
 
         String predicate = "";
         if(!filter.equals("all")) {
-            predicate = "where " + filter;
+            predicate = "where type = " + filter;
         }
 
         dbConnect = new MySQLConnect();

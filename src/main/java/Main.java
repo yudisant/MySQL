@@ -66,8 +66,8 @@ public class Main {
                             break;
 
                         case FILTR:
-                            System.out.printf("Введите тип животного: %s", String.join(", ", AnimalFactory.animalTypes));
-                            String types = scanner.next();
+                            System.out.printf("Введите тип животного: %s\n", String.join(", ", AnimalFactory.animalTypes));
+                            String types = scanner.next().toUpperCase(Locale.ROOT).trim();
 
                             ArrayList<Animals> animalsArrayList = animalsTable.readFilter(types);
                             if (animalsArrayList.isEmpty()) {
@@ -77,7 +77,6 @@ public class Main {
                                 }
                             break;
                         }
-                        break;
                     }
 
                 case EXIT:
