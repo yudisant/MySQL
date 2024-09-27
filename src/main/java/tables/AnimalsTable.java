@@ -76,7 +76,7 @@ public class AnimalsTable extends AbsTable{
 
     public void update(Animals animals) {
         dbConnect.execute(String.format(
-                "UPDATE %s SET 'type=%s', 'name=%s', 'color=%s', age=%d, weight=%d WHERE id=%d",
+                "UPDATE %s SET type='%s', name='%s', color='%s', age=%d, weight=%d WHERE id=%d",
                 NAME,
                 animals.getType(),
                 animals.getName(),

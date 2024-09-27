@@ -2,6 +2,7 @@ import animalFactory.AnimalFactory;
 import animals.Animals;
 import data.AnimalData;
 import data.Commands;
+import data.ListFiltr;
 import tables.AnimalsTable;
 import utils.ValidateNumber;
 
@@ -47,12 +48,43 @@ public class Main {
                     break;
 
                 case LIST:
-                    if (animalsTable.isTableEmpty()) {
-                        System.out.println("Список пуст. Добавьте животное.");
+                    while (true) {
+                        System.out.println("Выберите тип вывода списка: ");
+                        System.out.println(Arrays.toString(ListFiltr.values()));
+                        input = scanner.next().toUpperCase(Locale.ROOT).trim();
+                        ListFiltr listFiltr = ListFiltr.of(input);
+
+                        if (listFiltr == null) {
+                        System.out.println("Неверная введена команда.");
+                        continue;
                     }
-                    ArrayList<Animals> animalList = animalsTable.read();
-                    animalList.forEach(System.out::println);
-                    break;
+
+                    switch (listFiltr) {
+                        case ALL :
+                            ArrayList<Animals> animalList = animalsTable.read();
+                            animalList.forEach(System.out::println);
+                            break;
+
+                        case FILTR:
+                            System.out.printf("Введите тип животного: %s", String.join("''", AnimalFactory.animalTypes));
+                            String types = scanner.next();
+
+                            ArrayList<Animals> animalsByType = animalsTable.read(types);
+                            if (animalsByType.isEmpty()) {
+                                System.out.println("Животные заданного типа не найдены");
+                            } else {
+                                for (Animals animal : animalsByType) {
+                                    System.out.println(animal);
+                                }
+//                            ArrayList<Animals> animalsArrayList = animalsTable.readFilter(input);
+                            break;
+//                        if (animalsTable.isTableEmpty()) {
+//                            System.out.println("Список пуст. Добавьте животное.");
+//                        }
+                    }
+                        break;
+                    }
+
 
                 case EXIT:
                     System.exit(0);
@@ -63,10 +95,10 @@ public class Main {
                     System.out.println("Введите id животного: ");
                     int id = scanner.nextInt();
 
-                    Animals newAnimal = createAnimalWithData();
-                    newAnimal.setId(id);
+                    Animals animal = createAnimalWithData();
+                    animal.setId(id);
 
-                    animalsTable.update(newAnimal);
+                    animalsTable.update(animal);
                     break;
             }
         }

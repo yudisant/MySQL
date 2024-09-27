@@ -4,6 +4,9 @@ import animals.birds.Duck;
 import animals.pets.Cat;
 import animals.pets.Dog;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class AnimalFactory {
 
     private int id;
@@ -30,4 +33,5 @@ public class AnimalFactory {
             default -> null;
         };
     }
+    public static List <String> animalTypes = Arrays.asList("CAT", "DOG", "DUCK");
 }
