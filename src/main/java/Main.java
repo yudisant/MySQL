@@ -28,6 +28,7 @@ public class Main {
         columnsAnimalsTable.add("age INT");
         animalsTable.created(columnsAnimalsTable);
 
+        outer:
         while (true) {
 
             System.out.print("Введите команду: ");
@@ -48,6 +49,7 @@ public class Main {
                     break;
 
                 case LIST:
+                    inner:
                     while (true) {
                         System.out.println("Выберите тип вывода списка: ");
                         System.out.println(Arrays.toString(ListFiltr.values()));
@@ -77,6 +79,7 @@ public class Main {
                                 }
                             break;
                         }
+                        continue outer;
                     }
 
                 case EXIT:
