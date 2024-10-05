@@ -1,4 +1,4 @@
-package animalFactory;
+package factory;
 import animals.Animals;
 import animals.birds.Duck;
 import animals.pets.Cat;
@@ -7,22 +7,10 @@ import animals.pets.Dog;
 import java.util.Arrays;
 import java.util.List;
 
-public class AnimalFactory {
+public class AnimalFactory extends Animals {
 
-    private int id;
-    private static int age;
-    private static int weight;
-    static String name;
-    static String color;
-    static String type;
-
-    public AnimalFactory(String color, String name, int weight, String type, int age) {
-        this.id = id;
-        this.color =color;
-        this.name = name;
-        this.weight = weight;
-        this.type = type;
-        this.age = age;
+    public AnimalFactory(int id, String color, String name, int weight, String type, int age) {
+        super(id, color, name, weight, type, age);
     }
 
     public static Animals createAnimals(String color, String name, int weight, String type, int age) {
@@ -33,5 +21,5 @@ public class AnimalFactory {
             default -> null;
         };
     }
-    public static List <String> animalTypes = Arrays.asList("CAT", "DOG", "DUCK");
+    public static List <String> animalTypes = Arrays.asList("'CAT'", "'DOG'", "'DUCK'");
 }

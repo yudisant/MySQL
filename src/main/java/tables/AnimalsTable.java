@@ -2,6 +2,7 @@ package tables;
 
 import animals.Animals;
 import db.MySQLConnect;
+import factory.AnimalFactory;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -47,8 +48,8 @@ public class AnimalsTable extends AbsTable{
             String type = resultSet.getString("type");
             int age = resultSet.getInt("age");
 
-            Animals animalsRead = new Animals(id, color, name, weight, type, age);
-            animals.add(animalsRead);
+            AnimalFactory animalsReadFilter = new AnimalFactory(id, color, name, weight, type, age);
+            animals.add(animalsReadFilter);
         }
         return animals;
     }
@@ -67,9 +68,8 @@ public class AnimalsTable extends AbsTable{
             int age = resultSet.getInt("age");
             int weight = resultSet.getInt("weight");
 
-            Animals animals = new Animals(id, color, name, weight, type, age);
-            animal.add(animals);
-
+            AnimalFactory animalsRead = new AnimalFactory(id, color, name, weight, type, age);
+            animal.add(animalsRead);
         }
         return animal;
     }
@@ -86,10 +86,4 @@ public class AnimalsTable extends AbsTable{
                 animals.getId()
         ));
     }
-
-    public boolean isTableEmpty() throws SQLException {
-        ArrayList<Animals> animals = read();
-        return animals == null || animals.isEmpty();
-    }
-
 }

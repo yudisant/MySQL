@@ -1,8 +1,8 @@
-import animalFactory.AnimalFactory;
+import factory.AnimalFactory;
 import animals.Animals;
 import data.AnimalData;
 import data.Commands;
-import data.ListFiltr;
+import data.ListFilter;
 import tables.AnimalsTable;
 import utils.ValidateNumber;
 
@@ -28,7 +28,6 @@ public class Main {
         columnsAnimalsTable.add("age INT");
         animalsTable.created(columnsAnimalsTable);
 
-        outer:
         while (true) {
 
             System.out.print("Введите команду: ");
@@ -50,23 +49,23 @@ public class Main {
 
                 case LIST:
                     while (true) {
-                        System.out.println("Выберите тип вывода списка: ");
-                        System.out.println(Arrays.toString(ListFiltr.values()));
+                        System.out.print("Выберите тип вывода списка: ");
+                        System.out.println(Arrays.toString(ListFilter.values()));
                         input = scanner.next().toUpperCase(Locale.ROOT).trim();
-                        ListFiltr listFiltr = ListFiltr.of(input);
+                        ListFilter listFilter = ListFilter.of(input);
 
-                        if (listFiltr == null) {
+                        if (listFilter == null) {
                         System.out.println("Неверная введена команда.");
                         continue;
                         }
 
-                    switch (listFiltr) {
+                    switch (listFilter) {
                         case ALL :
                             ArrayList<Animals> animalList = animalsTable.read();
                             animalList.forEach(System.out::println);
                             break;
 
-                        case FILTR:
+                        case FILTER:
                             System.out.printf("Введите тип животного: %s\n", String.join(", ", AnimalFactory.animalTypes));
                             String types = scanner.next().toUpperCase(Locale.ROOT).trim();
 
@@ -78,13 +77,12 @@ public class Main {
                                 }
                             break;
                         }
-                        continue outer;
+                        break;
                     }
 
                 case EXIT:
+                    System.out.println("Выход");
                     System.exit(0);
-                    System.out.println("EXIT");
-                    break;
 
                 case UPDATE:
                     System.out.println("Введите id животного: ");

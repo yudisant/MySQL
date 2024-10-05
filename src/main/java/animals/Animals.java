@@ -1,13 +1,9 @@
 package animals;
 
-public class Animals {
+public abstract class Animals {
     private int id;
     private int age, weight;
     private String name, color, type;
-
-    public Animals() {
-
-    }
 
     public int getAge() {
         return age;
