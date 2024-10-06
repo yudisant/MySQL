@@ -7,11 +7,6 @@
     <list default="true" id="cdf93344-a0f6-4a6e-a052-9e65c906b6e6" name="Changes" comment="12">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/animalFactory/AnimalFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/animals/Animals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/animals/Animals.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/AnimalData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/data/AnimalData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/ListFiltr.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/tables/AnimalsTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tables/AnimalsTable.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

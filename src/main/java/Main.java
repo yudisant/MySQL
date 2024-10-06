@@ -7,6 +7,7 @@ import tables.AnimalsTable;
 import utils.ValidateNumber;
 
 import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
 import java.util.*;
 
 public class Main {
@@ -55,27 +56,31 @@ public class Main {
                         ListFilter listFilter = ListFilter.of(input);
 
                         if (listFilter == null) {
-                        System.out.println("Неверная введена команда.");
-                        continue;
+                            System.out.println("Неверная введена команда.");
+                            continue;
                         }
 
-                    switch (listFilter) {
-                        case ALL :
-                            ArrayList<Animals> animalList = animalsTable.read();
-                            animalList.forEach(System.out::println);
-                            break;
+                        switch (listFilter) {
+                            case ALL:
+                                ArrayList<Animals> animalList = animalsTable.read();
+                                animalList.forEach(System.out::println);
+                                break;
 
-                        case FILTER:
-                            System.out.printf("Введите тип животного: %s\n", String.join(", ", AnimalFactory.animalTypes));
-                            String types = scanner.next().toUpperCase(Locale.ROOT).trim();
+                            case FILTER:
+                                try {
+                                    System.out.printf("Введите тип животного: %s\n", String.join(", ", AnimalFactory.animalTypes));
+                                    String types = scanner.next().toUpperCase(Locale.ROOT).trim();
 
-                            ArrayList<Animals> animalsArrayList = animalsTable.readFilter(types);
-                            if (animalsArrayList.isEmpty()) {
-                                System.out.println("Животные заданного типа не найдены");
-                            } else {
-                                animalsArrayList.forEach(System.out::println);
+                                    ArrayList<Animals> animalsArrayList = animalsTable.readFilter(types);
+                                    if (animalsArrayList.isEmpty()) {
+                                        System.out.println("Животные заданного типа не найдены");
+                                    } else {
+                                        animalsArrayList.forEach(System.out::println);
+                                    }
+                                    break;
+                                } catch (SQLSyntaxErrorException exception) {
+                                    System.out.println("Неверный ввод.");
                                 }
-                            break;
                         }
                         break;
                     }
