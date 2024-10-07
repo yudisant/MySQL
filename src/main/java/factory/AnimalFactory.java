@@ -4,14 +4,7 @@ import animals.birds.Duck;
 import animals.pets.Cat;
 import animals.pets.Dog;
 
-import java.util.Arrays;
-import java.util.List;
-
-public class AnimalFactory extends Animals {
-
-    public AnimalFactory(int id, String color, String name, int weight, String type, int age) {
-        super(id, color, name, weight, type, age);
-    }
+public class AnimalFactory {
 
     public static Animals createAnimals(String color, String name, int weight, String type, int age) {
         return switch (type) {
@@ -21,5 +14,4 @@ public class AnimalFactory extends Animals {
             default -> null;
         };
     }
-    public static List <String> animalTypes = Arrays.asList("'CAT'", "'DOG'", "'DUCK'");
 }

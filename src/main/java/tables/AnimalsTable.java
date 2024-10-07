@@ -15,7 +15,7 @@ public class AnimalsTable extends AbsTable{
         super(NAME);
     }
 
-    public void write (Animals animals) {
+    public void write(Animals animals) {
         dbConnect.execute(String.format(
                 "INSERT INTO %s (id,color,name,weight,type,age)" +
                 "VALUES('%s','%s','%s','%s','%s','%s')",
@@ -35,11 +35,11 @@ public class AnimalsTable extends AbsTable{
 
         String predicate = "";
         if(!filter.equals("all")) {
-            predicate = "where type = " + filter;
+            predicate = "where type = '" + filter;
         }
 
         dbConnect = new MySQLConnect();
-        resultSet = dbConnect.executeQuery(String.format("SELECT * FROM %s %s;", NAME, predicate).trim());
+        resultSet = dbConnect.executeQuery(String.format("SELECT * FROM %s %s';", NAME, predicate).trim());
         while (resultSet.next()) {
             int id = resultSet.getInt("id");
             String color = resultSet.getString("color");
@@ -48,7 +48,7 @@ public class AnimalsTable extends AbsTable{
             String type = resultSet.getString("type");
             int age = resultSet.getInt("age");
 
-            AnimalFactory animalsReadFilter = new AnimalFactory(id, color, name, weight, type, age);
+            Animals animalsReadFilter = new AnimalFactory(id, color, name, weight, type, age);
             animals.add(animalsReadFilter);
         }
         return animals;
@@ -68,7 +68,7 @@ public class AnimalsTable extends AbsTable{
             int age = resultSet.getInt("age");
             int weight = resultSet.getInt("weight");
 
-            AnimalFactory animalsRead = new AnimalFactory(id, color, name, weight, type, age);
+            Animals animalsRead = new AnimalFactory(id, color, name, weight, type, age);
             animal.add(animalsRead);
         }
         return animal;

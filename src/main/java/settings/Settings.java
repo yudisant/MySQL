@@ -14,11 +14,11 @@ public class Settings implements ISettings{
         Map<String, String> resurs = new HashMap<>();
         try {
             properties.load(new FileInputStream(System.getProperty("user.dir") + "/src/main/resources/MySQLsettings.properties"));
-        } catch (IOException ex) {
+        } catch(IOException ex) {
             ex.printStackTrace();
         }
 
-        for (String key : properties.stringPropertyNames()) {
+        for(String key : properties.stringPropertyNames()) {
             resurs.put(key, properties.getProperty(key));
         }
         return resurs;

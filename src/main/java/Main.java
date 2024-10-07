@@ -29,19 +29,19 @@ public class Main {
         columnsAnimalsTable.add("age INT");
         animalsTable.created(columnsAnimalsTable);
 
-        while (true) {
+        while(true) {
 
             System.out.print("Введите команду: ");
             System.out.println(Arrays.toString(Commands.values()));
             String input = scanner.next().toUpperCase(Locale.ROOT).trim();
             Commands comm = Commands.of(input);
 
-            if (comm == null) {
+            if(comm == null) {
                 System.out.println("Неверно введена команда.");
                 continue;
             }
 
-            switch (comm) {
+            switch(comm) {
                 case ADD:
                     animals = createAnimalWithData();
                     animalsTable.write(animals);
@@ -49,18 +49,18 @@ public class Main {
                     break;
 
                 case LIST:
-                    while (true) {
+                    while(true) {
                         System.out.print("Выберите тип вывода списка: ");
                         System.out.println(Arrays.toString(ListFilter.values()));
                         input = scanner.next().toUpperCase(Locale.ROOT).trim();
                         ListFilter listFilter = ListFilter.of(input);
 
-                        if (listFilter == null) {
+                        if(listFilter == null) {
                             System.out.println("Неверная введена команда.");
                             continue;
                         }
 
-                        switch (listFilter) {
+                        switch(listFilter) {
                             case ALL:
                                 ArrayList<Animals> animalList = animalsTable.read();
                                 animalList.forEach(System.out::println);
@@ -68,17 +68,18 @@ public class Main {
 
                             case FILTER:
                                 try {
-                                    System.out.printf("Введите тип животного: %s\n", String.join(", ", AnimalFactory.animalTypes));
+                                    System.out.print("Введите тип животного: ");
+                                    System.out.println(Arrays.toString(AnimalData.values()));
                                     String types = scanner.next().toUpperCase(Locale.ROOT).trim();
 
                                     ArrayList<Animals> animalsArrayList = animalsTable.readFilter(types);
-                                    if (animalsArrayList.isEmpty()) {
+                                    if(animalsArrayList.isEmpty()) {
                                         System.out.println("Животные заданного типа не найдены");
                                     } else {
                                         animalsArrayList.forEach(System.out::println);
                                     }
                                     break;
-                                } catch (SQLSyntaxErrorException exception) {
+                                } catch(SQLSyntaxErrorException exception) {
                                     System.out.println("Неверный ввод.");
                                 }
                         }
@@ -102,7 +103,7 @@ public class Main {
         }
     }
 
-    private static int enterNumberData (String errorMessage, int attempt) {
+    private static int enterNumberData(String errorMessage, int attempt) {
         if (attempt == 0) {
             return -1;
         }
@@ -123,20 +124,20 @@ public class Main {
     }
 
     private static Animals createAnimalWithData() {
-        while (true) {
+        while(true) {
             System.out.print("Введите тип животного: ");
             System.out.println(Arrays.toString(AnimalData.values()));
             String animalType = scanner.next().toUpperCase().trim();
 
             boolean isAnimalsValid = false;
-            for (AnimalData animalData : AnimalData.values()) {
-                if (animalData.name().equals(animalType)) {
+            for(AnimalData animalData : AnimalData.values()) {
+                if(animalData.name().equals(animalType)) {
                     isAnimalsValid = true;
                     break;
                 }
             }
 
-            if (!isAnimalsValid) {
+            if(!isAnimalsValid) {
                 System.out.println("Недопустимый тип животного!");
                 continue;
             }
@@ -149,14 +150,14 @@ public class Main {
 
             System.out.println("Введите вес животного: ");
             int animalWeight = enterNumberData("Неверно введён вес! \nПовторите ввод: ", 5);
-            if (animalWeight == -1) {
+            if(animalWeight == -1) {
                 System.out.println("Вы потратили все попытки ввода!");
                 continue;
             }
 
             System.out.println("Введите возраст животного: ");
             int animalAge = enterNumberData("Неверно введён возраст! \nПовторите ввод: ", 5);
-            if (animalAge == -1) {
+            if(animalAge == -1) {
                 System.out.println("Вы потратили все попытки ввода!");
             }
             return AnimalFactory.createAnimals(animalColor, animalName, animalWeight, animalType, animalAge);

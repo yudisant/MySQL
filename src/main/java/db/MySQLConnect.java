@@ -14,49 +14,49 @@ public class MySQLConnect implements DBConnect{
         Map<String, String> confData = confReader.getSettings();
 
         try {
-            if (connection == null) {
+            if(connection == null) {
                 connection = DriverManager.getConnection(String.format("%s/%s", confData.get("url"), confData.get("name")),
                 confData.get("username"), confData.get("password"));
             }
-            if (statement == null) {
+            if(statement == null) {
                 statement = connection.createStatement();
             }
-        } catch (SQLException ex) {
+        } catch(SQLException ex) {
             ex.printStackTrace();
         }
     }
 
     public static void close() {
         try {
-            if (statement != null) {
+            if(statement != null) {
                 statement.close();
                 statement = null;
             }
-            if (connection != null) {
+            if(connection != null) {
                 connection.close();
                 connection = null;
             }
-        } catch (SQLException ex) {
+        } catch(SQLException ex) {
             ex.printStackTrace();
         }
     }
 
     @Override
-    public void execute (String sqlRequest) {
+    public void execute(String sqlRequest) {
         this.open();
         try {
             statement.execute(sqlRequest);
-        } catch (SQLException ex) {
+        } catch(SQLException ex) {
             ex.printStackTrace();
         }
     }
 
     @Override
-    public ResultSet executeQuery (String sqlRequest) {
+    public ResultSet executeQuery(String sqlRequest) {
         this.open();
         try {
             return statement.executeQuery(sqlRequest);
-        } catch (SQLException ex) {
+        } catch(SQLException ex) {
             ex.printStackTrace();
             return null;
         }
