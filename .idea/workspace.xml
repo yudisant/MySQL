@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdf93344-a0f6-4a6e-a052-9e65c906b6e6" name="Changes" comment="12" />
+    <list default="true" id="cdf93344-a0f6-4a6e-a052-9e65c906b6e6" name="Changes" comment="12">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/animals/Animals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/animals/Animals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/animals/birds/Duck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/animals/birds/Duck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/animals/pets/Cat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/animals/pets/Cat.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/animals/pets/Dog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/animals/pets/Dog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/factory/AnimalFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/factory/AnimalFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tables/AnimalsTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tables/AnimalsTable.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +57,7 @@
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;slave&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/zanud/Downloads/Otus_Java_Dz3-main&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/zanud/Documents/Java/mySQL/src/main/java/org/example/Main.java&quot;,

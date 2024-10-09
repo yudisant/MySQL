@@ -14,4 +14,13 @@ public class AnimalFactory {
             default -> null;
         };
     }
+
+    public static Animals readAnimals(int id, String color, String name, int weight, String type, int age) {
+        return switch (type) {
+            case "CAT" -> new Cat(id, color, name, weight, type , age);
+            case "DOG" -> new Dog(id, color, name, weight, type , age);
+            case "DUCK" -> new Duck(id, color, name, weight, type , age);
+            default -> null;
+        };
+    }
 }

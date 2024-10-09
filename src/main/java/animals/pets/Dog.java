@@ -3,8 +3,13 @@ package animals.pets;
 import animals.Animals;
 
 public class Dog extends Animals {
-    public Dog (String color, String name, int weight, String type, int age) {
+
+    public Dog(String color, String name, int weight, String type, int age) {
         super (color, name, weight, type, age);
+    }
+
+    public Dog(int id, String color, String name, int weight, String type, int age) {
+        super(id, color, name, weight, type , age);
     }
 
     @Override

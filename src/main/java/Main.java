@@ -1,3 +1,4 @@
+import db.MySQLConnect;
 import factory.AnimalFactory;
 import animals.Animals;
 import data.AnimalData;
@@ -5,9 +6,7 @@ import data.Commands;
 import data.ListFilter;
 import tables.AnimalsTable;
 import utils.ValidateNumber;
-
 import java.sql.SQLException;
-import java.sql.SQLSyntaxErrorException;
 import java.util.*;
 
 public class Main {
@@ -81,7 +80,9 @@ public class Main {
 
                 case EXIT:
                     System.out.println("Выход");
+                    MySQLConnect.close();
                     System.exit(0);
+
 
                 case UPDATE:
                     System.out.println("Введите id животного: ");

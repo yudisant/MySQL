@@ -1,6 +1,6 @@
 package animals;
-//если делаю Animals abstract то методы в AnimalsTable(read, readFilter) не работают
-public class Animals {
+
+public abstract class Animals {
     private int id;
     private int age, weight;
     private String name, color, type;
