@@ -49,7 +49,6 @@ public class Main {
                     break;
 
                 case LIST:
-                    while(true) {
                         System.out.print("Выберите тип вывода списка: ");
                         System.out.println(Arrays.toString(ListFilter.values()));
                         input = scanner.next().toUpperCase(Locale.ROOT).trim();
@@ -64,27 +63,21 @@ public class Main {
                             case ALL:
                                 ArrayList<Animals> animalList = animalsTable.read();
                                 animalList.forEach(System.out::println);
-                                break;
+                                continue;
 
                             case FILTER:
-                                try {
-                                    System.out.print("Введите тип животного: ");
-                                    System.out.println(Arrays.toString(AnimalData.values()));
-                                    String types = scanner.next().toUpperCase(Locale.ROOT).trim();
+                                System.out.print("Введите тип животного: ");
+                                System.out.println(Arrays.toString(AnimalData.values()));
+                                String types = scanner.next().toUpperCase(Locale.ROOT).trim();
 
-                                    ArrayList<Animals> animalsArrayList = animalsTable.readFilter(types);
-                                    if(animalsArrayList.isEmpty()) {
-                                        System.out.println("Животные заданного типа не найдены");
-                                    } else {
-                                        animalsArrayList.forEach(System.out::println);
-                                    }
-                                    break;
-                                } catch(SQLSyntaxErrorException exception) {
-                                    System.out.println("Неверный ввод.");
+                                ArrayList<Animals> animalsArrayList = animalsTable.readFilter(types);
+                                if (animalsArrayList.isEmpty()) {
+                                    System.out.println("Животные заданного типа не найдены");
+                                } else {
+                                    animalsArrayList.forEach(System.out::println);
                                 }
+                                continue;
                         }
-                        break;
-                    }
 
                 case EXIT:
                     System.out.println("Выход");
